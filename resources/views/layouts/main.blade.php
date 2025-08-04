@@ -66,9 +66,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link active" href="/home">Profil</a></li>
-            <li class="nav-item"><a class="nav-link active" href="/umkm">UMKM</a></li>
-            <li class="nav-item"><a class="nav-link" href="#profil">Layanan</a></li>
+            <li class="nav-item"><a class="nav-link" href="/home">Profil</a></li>
+            <li class="nav-item"><a class="nav-link" href="/umkm">UMKM</a></li>
+            <li class="nav-item"><a class="nav-link" href="/service">Layanan</a></li>
+            @auth
+            <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+            @endauth
             </ul>
         </div>
         </div>
