@@ -15,9 +15,15 @@
     </div>
 </section>
 
-  <!-- Daftar UMKM -->
+<!-- Daftar UMKM -->
 <section class="py-5">
     <div class="container">
+      <div class="row-lg-4 text-lg-end my-3">
+          <a href="/umkm/create" class="btn btn-success btn-lg">
+              <i class="fas fa-plus-circle me-2"></i> Tambah UMKM
+          </a>
+      </div>
+
       <!-- Filter Kategori (Opsional) -->
       <div class="row mb-4">
         <div class="col-md-6">

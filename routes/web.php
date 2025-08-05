@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UmkmController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,10 +11,6 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('pages.home');
 })->name('home');
-
-Route::get('/umkm', function () {
-    return view('pages.umkm');
-})->name('umkm');
 
 Route::get('/themes/nature', function () {
     return view('themes.nature');
@@ -40,5 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::resource('umkm', UmkmController::class);
 
 require __DIR__.'/auth.php';
