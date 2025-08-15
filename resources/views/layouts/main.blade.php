@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-        --primary: #2e7d32;
+        --primary: #459749ff;
         --secondary: #388e3c;
         --light-green: #8bc34a;
         }
@@ -26,7 +26,7 @@
         }
         .hero-section {
         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                    url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+                    url({{ asset('/images/hero-img.jpeg') }});
         background-size: cover;
         background-position: center;
         }
@@ -82,7 +82,7 @@
     <!-- Footer -->
     <footer class="py-4 bg-black text-white text-center">
         <div class="container">
-        <p class="mb-0">&copy; 2023 Desa Maju Makmur. All rights reserved.</p>
+        <p class="mb-0">&copy; 2025 Desa Ciangir. All rights reserved.</p>
         </div>
     </footer>
 

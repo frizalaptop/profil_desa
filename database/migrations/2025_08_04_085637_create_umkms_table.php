@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('umkms', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->enum('category', ['Makanan', 'Kerajinan', 'Pertanian', 'Jasa', 'Lainnya']);
+            $table->string('owner');
+            $table->string('phone');
+            $table->text('address');
+            $table->text('description');
+            $table->text('gmaps_embed');
+            $table->string('product_photo');
             $table->timestamps();
         });
     }

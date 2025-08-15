@@ -37,8 +37,8 @@
             <div class="d-flex align-items-center mb-3">
               <i class="fas fa-map-marked-alt feature-icon me-3"></i>
               <div>
-                <h3 class="h5 mb-0">12.5</h3>
-                <small>Km² Luas Wilayah</small>
+                <h3 class="h5 mb-0">22,095</h3>
+                <small>HA Pemukiman</small>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
             <div class="d-flex align-items-center">
               <i class="fas fa-warehouse feature-icon me-3"></i>
               <div>
-                <h3 class="h5 mb-0">8</h3>
+                <h3 class="h5 mb-0">3</h3>
                 <small>Dusun</small>
               </div>
             </div>
@@ -55,8 +55,8 @@
             <div class="d-flex align-items-center">
               <i class="fas fa-seedling feature-icon me-3"></i>
               <div>
-                <h3 class="h5 mb-0">120</h3>
-                <small>Ha Sawah</small>
+                <h3 class="h5 mb-0">178,620</h3>
+                <small>HA Sawah</small>
               </div>
             </div>
           </div>
@@ -64,8 +64,7 @@
       </div>
       <div class="col-lg-6">
         <div class="map-container shadow">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15845.125123456789!2d110.12345678901234!3d-6.987654321012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTknMTUuNiJTIDExMMKwMDcnMzYuNiJF!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid" 
-                  width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31674.068344190295!2d108.71260776930035!3d-7.096002458757836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f7466e23602af%3A0xf944a3aad659c643!2sCiangir%2C%20Cibingbin%2C%20Kuningan%20Regency%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1754642770598!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
@@ -103,9 +102,9 @@
       <div class="col-md-4">
         <div class="card h-100 shadow-sm border-0">
           <div class="card-body text-center p-4">
-            <i class="fas fa-chart-line feature-icon mb-3"></i>
-            <h5 class="card-title">Data Statistik</h5>
-            <p class="card-text">Data kependudukan dan statistik perkembangan desa.</p>
+            <i class="fas fa-hand-holding-medical feature-icon mb-3"></i>
+            <h5 class="card-title">Posyandu & Kesehatan</h5>
+            <p class="card-text">Layanan pemerikasaan kesehatan anak dan ibu hamil.</p>
             <a href="#" class="btn btn-outline-success">Info Selengkapnya</a>
           </div>
         </div>

@@ -3,6 +3,14 @@
 
 @section('content')
 
+<style>
+  .map-static{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+</style>
+
 <!-- Header UMKM -->
 <section class="bg-success text-white py-5">
     <div class="container py-4">
@@ -45,16 +53,16 @@
         <!-- UMKM 1 -->
         <div class="col-md-6 col-lg-4">
           <div class="umkm-card card h-100 shadow-sm">
-            <img src="https://maps.googleapis.com/maps/api/staticmap?center=-6.987654,110.123456&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7C-6.987654,110.123456&key=YOUR_API_KEY" 
+            <img src="https://www.ruangriang.co.id/wp-content/uploads/2023/07/05c39369e7521189f942a62d18777283.jpg" 
                  class="map-static card-img-top" alt="Lokasi UMKM">
             <div class="card-body">
               <span class="badge badge-category mb-2">Makanan</span>
-              <h5 class="card-title">Warung Makan Sederhana</h5>
+              <h5 class="card-title">Dorokdok</h5>
               <p class="card-text text-muted">
                 <i class="fas fa-user me-2"></i> Ibu Siti Rahayu<br>
                 <i class="fas fa-map-marker-alt me-2"></i> Dusun Krajan, RT 02/RW 04
               </p>
-              <p class="card-text">Menjual nasi campur dengan lauk khas desa dan aneka minuman tradisional.</p>
+              <p class="card-text">Kerupuk kulit sapi siap saji.</p>
               <a href="https://wa.me/6281234567890" class="btn btn-sm btn-success">
                 <i class="fab fa-whatsapp me-1"></i> Hubungi
               </a>
@@ -65,16 +73,16 @@
         <!-- UMKM 2 -->
         <div class="col-md-6 col-lg-4">
           <div class="umkm-card card h-100 shadow-sm">
-            <img src="https://maps.googleapis.com/maps/api/staticmap?center=-6.987654,110.123456&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7C-6.987654,110.123456&key=YOUR_API_KEY" 
+            <img src="https://sorot.co/images/2023/06/wonosobo/220229_5282_fotoistimewa20230611220229.jpg" 
                  class="map-static card-img-top" alt="Lokasi UMKM">
             <div class="card-body">
-              <span class="badge badge-category mb-2">Kerajinan</span>
-              <h5 class="card-title">Anyaman Bambu Jaya</h5>
+              <span class="badge badge-category mb-2">Makanan</span>
+              <h5 class="card-title">Opak Singkong</h5>
               <p class="card-text text-muted">
                 <i class="fas fa-user me-2"></i> Bapak Sutrisno<br>
                 <i class="fas fa-map-marker-alt me-2"></i> Dusun Ngemplak, RT 01/RW 03
               </p>
-              <p class="card-text">Produk anyaman bambu seperti keranjang, tudung saji, dan peralatan rumah tangga.</p>
+              <p class="card-text">Opak singkong mentah siap produksi.</p>
               <a href="https://wa.me/6281234567891" class="btn btn-sm btn-success">
                 <i class="fab fa-whatsapp me-1"></i> Hubungi
               </a>
@@ -85,16 +93,16 @@
         <!-- UMKM 3 -->
         <div class="col-md-6 col-lg-4">
           <div class="umkm-card card h-100 shadow-sm">
-            <img src="https://maps.googleapis.com/maps/api/staticmap?center=-6.987654,110.123456&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7C-6.987654,110.123456&key=YOUR_API_KEY" 
+            <img src="https://images.tokopedia.net/img/HCoJbh/2025/3/4/bdba2c17-ebb2-4a28-ad50-40c870c0d7c7.jpg" 
                  class="map-static card-img-top" alt="Lokasi UMKM">
             <div class="card-body">
               <span class="badge badge-category mb-2">Pertanian</span>
-              <h5 class="card-title">Tani Makmur Sejahtera</h5>
+              <h5 class="card-title">Kripik Singkong</h5>
               <p class="card-text text-muted">
-                <i class="fas fa-user me-2"></i> Kelompok Tani Desa<br>
+                <i class="fas fa-user me-2"></i> Agus Mansur<br>
                 <i class="fas fa-map-marker-alt me-2"></i> Dusun Ngadirojo, RT 05/RW 02
               </p>
-              <p class="card-text">Menjual beras organik, sayuran segar, dan buah-buahan hasil kebun warga.</p>
+              <p class="card-text">Kripik singkong dengan aneka bumbu.</p>
               <a href="https://wa.me/6281234567892" class="btn btn-sm btn-success">
                 <i class="fab fa-whatsapp me-1"></i> Hubungi
               </a>
