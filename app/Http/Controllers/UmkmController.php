@@ -13,7 +13,8 @@ class UmkmController extends Controller
      */
     public function index()
     {
-        return view('pages.umkm.index');
+        $umkms = Umkm::paginate(6);
+        return view('pages.umkm.index', compact('umkms'));
     }
 
     /**
@@ -36,18 +37,27 @@ public function store(Request $request)
         'owner' => 'required|string|max:255',
         'phone' => [
             'required',
-            'string',
-            'max:20',
+            'numeric',
+            'digits_between:10,15',
             'regex:/^[0-9]+$/',
             function ($attribute, $value, $fail) {
-                if (!preg_match('/^0/', $value)) {
-                    $fail('Nomor telepon harus dimulai dengan angka 0.');
+                // Hilangkan semua karakter non-digit
+                $cleaned = preg_replace('/[^0-9]/', '', $value);
+                
+                // Periksa apakah nomor dimulai dengan 62
+                if (!preg_match('/^62/', $cleaned)) {
+                    $fail('Nomor telepon harus menggunakan kode negara Indonesia (62). Contoh: 628123456789');
+                }
+                
+                // Periksa panjang nomor setelah 62 (minimal 8 digit)
+                if (strlen(substr($cleaned, 2)) < 8) {
+                    $fail('Nomor telepon setelah kode negara terlalu pendek.');
                 }
             }
         ],
         'address' => 'required|string',
         'description' => 'required|string',
-        'gmaps_embed' => 'required|url|starts_with:https://www.google.com/maps/embed',
+        'gmaps_embed' => 'required|url',
         'product_photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         'agreement' => 'required|accepted'
     ], [
@@ -83,6 +93,7 @@ public function store(Request $request)
             ->with('success', 'UMKM berhasil didaftarkan! Menunggu verifikasi admin.');
 
     } catch (\Exception $e) {
+        dd($e->getMessage());
         // Hapus file yang sudah terupload jika ada error
         if (isset($productPhotoPath) && Storage::disk('public')->exists($productPhotoPath)) {
             Storage::disk('public')->delete($productPhotoPath);

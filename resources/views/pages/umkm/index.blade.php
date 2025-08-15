@@ -50,6 +50,34 @@
 
       <!-- Daftar Card UMKM -->
       <div class="row g-4">
+
+        @forelse($umkms as $umkm)
+          <div class="col-md-6 col-lg-4">
+          <div class="umkm-card card h-100 shadow-sm">
+            <img src="storage/{{ $umkm->product_photo }}" 
+                 class="map-static card-img-top" alt="Foto UMKM">
+            <div class="card-body">
+              <span class="badge badge-category mb-2">{{ $umkm->category }}</span>
+              <h5 class="card-title">{{ $umkm->name }}</h5>
+              <p class="card-text text-muted">
+                <i class="fas fa-user me-2"></i> {{ $umkm->owner }}<br>
+                <i class="fas fa-map-marker-alt me-2"></i> {{ $umkm->address }}
+              </p>
+              <p class="card-text">Kerupuk kulit sapi siap saji.</p>
+              <a href="https://wa.me/{{ $umkm->phone }}" class="btn btn-sm btn-success">
+                <i class="fab fa-whatsapp me-1"></i> Hubungi
+              </a>
+            </div>
+          </div>
+        </div>
+        @empty
+          <div class="col-12">
+            <div class="alert alert-info text-center">
+              Belum ada UMKM yang terdaftar. <a href="/umkm/create">Tambahkan UMKM pertama!</a>
+            </div>
+          </div>
+        @endforelse
+
         <!-- UMKM 1 -->
         <div class="col-md-6 col-lg-4">
           <div class="umkm-card card h-100 shadow-sm">
