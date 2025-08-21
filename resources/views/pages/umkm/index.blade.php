@@ -1,6 +1,5 @@
 @extends('layouts.main')
 
-
 @section('content')
 
 <style>
@@ -8,6 +7,17 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
+  }
+  .badge-category {
+    background-color: #198754;
+    color: white;
+  }
+  .btn-action-group {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .btn-action-group .btn {
+    flex: 1;
   }
 </style>
 
@@ -26,11 +36,13 @@
 <!-- Daftar UMKM -->
 <section class="py-5">
     <div class="container">
+      @auth
       <div class="row-lg-4 text-lg-end my-3">
           <a href="/umkm/create" class="btn btn-success btn-lg">
               <i class="fas fa-plus-circle me-2"></i> Tambah UMKM
           </a>
       </div>
+      @endauth
 
       <!-- Filter Kategori (Opsional) -->
       <div class="row mb-4">
@@ -63,17 +75,35 @@
                 <i class="fas fa-user me-2"></i> {{ $umkm->owner }}<br>
                 <i class="fas fa-map-marker-alt me-2"></i> {{ $umkm->address }}
               </p>
-              <p class="card-text">Kerupuk kulit sapi siap saji.</p>
-              <a href="https://wa.me/{{ $umkm->phone }}" class="btn btn-sm btn-success">
-                <i class="fab fa-whatsapp me-1"></i> Hubungi
-              </a>
+              <p class="card-text">{{ $umkm->description }}</p>
+              
+              <div class="btn-action-group">
+                <a href="https://wa.me/{{ $umkm->phone }}" class="btn btn-sm btn-success">
+                  <i class="fab fa-whatsapp me-1"></i> Hubungi
+                </a>
+                
+                @auth
+                  <a href="{{ route('umkm.edit', $umkm->id) }}" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-edit me-1"></i> Perbarui
+                  </a>
+                @else
+                  <a href="{{ route('umkm.show', $umkm->id) }}" class="btn btn-sm btn-outline-info">
+                    <i class="fas fa-info-circle me-1"></i> Detail
+                  </a>
+                @endauth
+              </div>
             </div>
           </div>
         </div>
         @empty
           <div class="col-12">
             <div class="alert alert-info text-center">
-              Belum ada UMKM yang terdaftar. <a href="/umkm/create">Tambahkan UMKM pertama!</a>
+              Belum ada UMKM yang terdaftar. 
+              @auth
+                <a href="/umkm/create">Tambahkan UMKM pertama!</a>
+              @else
+                <a href="/login">Login</a> untuk menambahkan UMKM.
+              @endauth
             </div>
           </div>
         @endforelse
@@ -91,9 +121,22 @@
                 <i class="fas fa-map-marker-alt me-2"></i> Dusun Krajan, RT 02/RW 04
               </p>
               <p class="card-text">Kerupuk kulit sapi siap saji.</p>
-              <a href="https://wa.me/6281234567890" class="btn btn-sm btn-success">
-                <i class="fab fa-whatsapp me-1"></i> Hubungi
-              </a>
+              
+              <div class="btn-action-group">
+                <a href="https://wa.me/6281234567890" class="btn btn-sm btn-success">
+                  <i class="fab fa-whatsapp me-1"></i> Hubungi
+                </a>
+                
+                @auth
+                  <a href="/umkm/1/edit" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-edit me-1"></i> Perbarui
+                  </a>
+                @else
+                  <a href="/umkm/1" class="btn btn-sm btn-outline-info">
+                    <i class="fas fa-info-circle me-1"></i> Detail
+                  </a>
+                @endauth
+              </div>
             </div>
           </div>
         </div>
@@ -111,9 +154,22 @@
                 <i class="fas fa-map-marker-alt me-2"></i> Dusun Ngemplak, RT 01/RW 03
               </p>
               <p class="card-text">Opak singkong mentah siap produksi.</p>
-              <a href="https://wa.me/6281234567891" class="btn btn-sm btn-success">
-                <i class="fab fa-whatsapp me-1"></i> Hubungi
-              </a>
+              
+              <div class="btn-action-group">
+                <a href="https://wa.me/6281234567891" class="btn btn-sm btn-success">
+                  <i class="fab fa-whatsapp me-1"></i> Hubungi
+                </a>
+                
+                @auth
+                  <a href="/umkm/2/edit" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-edit me-1"></i> Perbarui
+                  </a>
+                @else
+                  <a href="/umkm/2" class="btn btn-sm btn-outline-info">
+                    <i class="fas fa-info-circle me-1"></i> Detail
+                  </a>
+                @endauth
+              </div>
             </div>
           </div>
         </div>
@@ -131,9 +187,22 @@
                 <i class="fas fa-map-marker-alt me-2"></i> Dusun Ngadirojo, RT 05/RW 02
               </p>
               <p class="card-text">Kripik singkong dengan aneka bumbu.</p>
-              <a href="https://wa.me/6281234567892" class="btn btn-sm btn-success">
-                <i class="fab fa-whatsapp me-1"></i> Hubungi
-              </a>
+              
+              <div class="btn-action-group">
+                <a href="https://wa.me/6281234567892" class="btn btn-sm btn-success">
+                  <i class="fab fa-whatsapp me-1"></i> Hubungi
+                </a>
+                
+                @auth
+                  <a href="/umkm/3/edit" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-edit me-1"></i> Perbarui
+                  </a>
+                @else
+                  <a href="/umkm/3" class="btn btn-sm btn-outline-info">
+                    <i class="fas fa-info-circle me-1"></i> Detail
+                  </a>
+                @endauth
+              </div>
             </div>
           </div>
         </div>

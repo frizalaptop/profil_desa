@@ -69,13 +69,6 @@ public function store(Request $request)
     try {
         // Upload foto produk ke folder 'umkm' dalam storage
         $productPhotoPath = $request->file('product_photo')->store('umkm', 'public');
-        
-        // Alternatif dengan nama file unik:
-        // $productPhotoPath = $request->file('product_photo')->storeAs(
-        //     'umkm',
-        //     time() . '_' . $request->file('product_photo')->getClientOriginalName(),
-        //     'public'
-        // );
 
         // Buat record UMKM
         $umkm = Umkm::create([
@@ -90,7 +83,7 @@ public function store(Request $request)
         ]);
 
         return redirect()->route('umkm.index')
-            ->with('success', 'UMKM berhasil didaftarkan! Menunggu verifikasi admin.');
+            ->with('success', 'UMKM berhasil didaftarkan! Menunggu.');
 
     } catch (\Exception $e) {
         dd($e->getMessage());
@@ -117,22 +110,124 @@ public function store(Request $request)
      */
     public function edit(Umkm $umkm)
     {
-        //
+        $umkm = Umkm::findOrFail($umkm->id);
+        return view('pages.umkm.edit', compact('umkm'));
     }
 
-    /**
+    /** 
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Umkm $umkm)
+    public function update(Request $request, $id)
     {
-        //
+        // Validasi data
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'category' => 'required|string|max:50',
+            'owner' => 'required|string|max:255',
+            'phone' => [
+                'required',
+                'numeric',
+                'digits_between:10,15',
+                'regex:/^[0-9]+$/',
+                function ($attribute, $value, $fail) {
+                    // Hilangkan semua karakter non-digit
+                    $cleaned = preg_replace('/[^0-9]/', '', $value);
+                    
+                    // Periksa apakah nomor dimulai dengan 62
+                    if (!preg_match('/^62/', $cleaned)) {
+                        $fail('Nomor telepon harus menggunakan kode negara Indonesia (62). Contoh: 628123456789');
+                    }
+                    
+                    // Periksa panjang nomor setelah 62 (minimal 8 digit)
+                    if (strlen(substr($cleaned, 2)) < 8) {
+                        $fail('Nomor telepon setelah kode negara terlalu pendek.');
+                    }
+                }
+            ],
+            'address' => 'required|string',
+            'description' => 'required|string',
+            'gmaps_embed' => 'required|url',
+            'product_photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ], [
+            'gmaps_embed.starts_with' => 'Link Google Maps harus berupa embed URL yang valid',
+            'product_photo.max' => 'Ukuran foto produk maksimal 2MB',
+        ]);
+            
+        try {
+            // Temukan UMKM yang akan diupdate
+            $umkm = Umkm::findOrFail($id);
+            
+            // Simpan path foto lama untuk kemungkinan dihapus nanti
+            $oldPhotoPath = $umkm->product_photo;
+
+            // Jika ada file foto baru diupload
+            if ($request->hasFile('product_photo')) {
+                // Upload foto produk baru ke folder 'umkm' dalam storage
+                $productPhotoPath = $request->file('product_photo')->store('umkm', 'public');
+                
+                // Update path foto produk
+                $umkm->product_photo = $productPhotoPath;
+            }
+
+            // Update data UMKM
+            $umkm->update([
+                'name' => $validated['name'],
+                'category' => $validated['category'],
+                'owner' => $validated['owner'],
+                'phone' => $validated['phone'],
+                'address' => $validated['address'],
+                'description' => $validated['description'],
+                'gmaps_embed' => $validated['gmaps_embed'],
+                // product_photo sudah diupdate di atas jika ada file baru
+            ]);
+
+            // Hapus foto lama jika ada foto baru yang diupload dan foto lama ada
+            if ($request->hasFile('product_photo') && $oldPhotoPath) {
+                if (Storage::disk('public')->exists($oldPhotoPath)) {
+                    Storage::disk('public')->delete($oldPhotoPath);
+                }
+            }
+
+            return redirect()->route('umkm.index')
+                ->with('success', 'Data UMKM berhasil diperbarui!');
+
+        } catch (\Exception $e) {
+            // Hapus file yang baru terupload jika ada error
+            if (isset($productPhotoPath) && Storage::disk('public')->exists($productPhotoPath)) {
+                Storage::disk('public')->delete($productPhotoPath);
+            }
+
+            return back()->withInput()
+                ->with('error', 'Gagal memperbarui UMKM. Error: ' . $e->getMessage());
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Umkm $umkm)
+    public function destroy($id)
     {
-        //
+        try {
+            // Temukan UMKM yang akan dihapus
+            $umkm = Umkm::findOrFail($id);
+            
+            // Simpan path foto untuk dihapus nanti
+            $photoPath = $umkm->product_photo;
+            
+            // Hapus data UMKM dari database
+            $umkm->delete();
+            
+            // Hapus file foto dari storage jika ada
+            if ($photoPath && Storage::disk('public')->exists($photoPath)) {
+                Storage::disk('public')->delete($photoPath);
+            }
+            
+            return redirect()->route('umkm.index')
+                ->with('success', 'UMKM berhasil dihapus!');
+                
+        } catch (\Exception $e) {
+            return redirect()->route('umkm.index')
+                ->with('error', 'Gagal menghapus UMKM. Error: ' . $e->getMessage());
+        }
     }
 }
