@@ -102,7 +102,7 @@ public function store(Request $request)
      */
     public function show(Umkm $umkm)
     {
-        //
+        return view('pages.umkm.show', compact('umkm'));
     }
 
     /**

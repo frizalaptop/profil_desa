@@ -58,7 +58,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
         <a class="navbar-brand fw-bold" href="#" style="color: var(--primary);">
-            <img src="{{ asset('/images/default-profile.jpg') }}" alt="Logo Desa" height="40" class="me-2">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" width="60" class="me-2">
             Desa Ciangir
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -71,6 +71,8 @@
             <li class="nav-item"><a class="nav-link" href="/service">Layanan</a></li>
             @auth
             <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+            @else
+            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
             @endauth
             </ul>
         </div>
