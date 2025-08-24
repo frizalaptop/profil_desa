@@ -18,8 +18,12 @@ Route::get('/service', function () {
     return view('pages.service');
 });
 
-Route::get('/umkm/{umkm}/preview', [UmkmController::class, 'preview'])->name('umkm.preview');
-Route::put('/umkm/{umkm}/verify', [UmkmController::class, 'verify'])->name('umkm.verify');
+Route::get('/umkm/{umkm}/preview', [UmkmController::class, 'preview'])
+    ->middleware(['auth', 'verified'])
+    ->name('umkm.preview');
+Route::put('/umkm/{umkm}/verify', [UmkmController::class, 'verify'])
+    ->middleware(['auth', 'verified'])
+    ->name('umkm.verify');
 
 Route::resource('umkm', UmkmController::class);
 
@@ -44,3 +48,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 require __DIR__.'/auth.php';
+
+
+// Membuat update file untuk posyandu, surat keterangan dan bansos

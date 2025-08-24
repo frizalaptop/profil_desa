@@ -241,7 +241,7 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <strong>Lokasi:</strong> ${umkm.gmaps_embed}<br>
+                                    <strong>Lokasi:</strong> <a href="${umkm.gmaps_embed}">${umkm.gmaps_embed}</a><br>
                                 </div>
                             </div>
                         `;

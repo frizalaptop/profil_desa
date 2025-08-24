@@ -13,7 +13,7 @@ class UmkmController extends Controller
      */
     public function index()
     {
-        $umkms = Umkm::paginate(6);
+        $umkms = Umkm::where('verified', true)->paginate(6);
         return view('pages.umkm.index', compact('umkms'));
     }
 
@@ -233,7 +233,13 @@ public function store(Request $request)
 
     public function verify(Umkm $umkm)
     {
+        // Autoriasi - hanya admin yang boleh melakukan verifikasi
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Unauthorized action. Hanya admin yang dapat memverifikasi UMKM.');
+        }
+
         $umkm->update(['verified' => true]);
+        
         return redirect()->back()->with('success', 'UMKM berhasil diverifikasi');
     }
 
