@@ -236,4 +236,52 @@ public function store(Request $request)
         $umkm->update(['verified' => true]);
         return redirect()->back()->with('success', 'UMKM berhasil diverifikasi');
     }
+
+    public function preview(Umkm $umkm)
+    {
+        try {
+            // Handle product photo URL
+            $productPhotoUrl = null;
+            if ($umkm->product_photo) {
+                // Cek format path dan konversi ke URL yang benar
+                if (strpos($umkm->product_photo, 'storage/') === 0) {
+                    // Path sudah dalam format storage/
+                    $relativePath = $umkm->product_photo;
+                } else {
+                    // Konversi dari path database ke format storage
+                    $relativePath = 'storage/' . str_replace('public/', '', $umkm->product_photo);
+                }
+                
+                // Gunakan asset helper untuk generate full URL
+                $productPhotoUrl = asset($relativePath);
+            }
+
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'id' => $umkm->id,
+                    'name' => $umkm->name,
+                    'owner' => $umkm->owner,
+                    'category' => $umkm->category,
+                    'phone' => $umkm->phone,
+                    'address' => $umkm->address,
+                    'description' => $umkm->description,
+                    'gmaps_embed' => $umkm->gmaps_embed,
+                    'product_photo' => $productPhotoUrl,
+                    'created_at' => $umkm->created_at->format('d M Y, H:i'),
+                    'updated_at' => $umkm->updated_at->format('d M Y, H:i'),
+                    'status' => $umkm->verified ? 'Terverifikasi' : 'Menunggu Verifikasi'
+                ],
+                'message' => 'Data UMKM berhasil diambil'
+            ]);
+
+        } catch (\Exception $e) {
+            \Log::error('Error fetching UMKM preview: ' . $e->getMessage());
+            
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan saat mengambil data UMKM'
+            ], 500);
+        }
+    }
 }

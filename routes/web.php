@@ -18,6 +18,7 @@ Route::get('/service', function () {
     return view('pages.service');
 });
 
+Route::get('/umkm/{umkm}/preview', [UmkmController::class, 'preview'])->name('umkm.preview');
 Route::put('/umkm/{umkm}/verify', [UmkmController::class, 'verify'])->name('umkm.verify');
 
 Route::resource('umkm', UmkmController::class);

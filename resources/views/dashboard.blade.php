@@ -1,4 +1,5 @@
 <x-app-layout>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <div class="py-4">
         <div class="container-fluid">
             @if(auth()->user()->role === 'admin')
@@ -37,15 +38,14 @@
                                             <td>
                                                 <div class="btn-group btn-group-sm">
                                                     <!-- Tombol Pratinjau -->
-                                                    <button onclick="previewUmkm({{ $umkm->id }})" 
-                                                            class="btn btn-outline-primary">
+                                                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#previewModal" onclick="loadUmkmData({{ $umkm->id }})">
                                                         <i class="fas fa-eye me-1"></i> Pratinjau
                                                     </button>
                                                     
                                                     <!-- Tombol Setuju -->
                                                     <form action="{{ route('umkm.verify', $umkm->id) }}" method="POST" class="d-inline">
                                                         @csrf
-                                                        @method('PATCH')
+                                                        @method('PUT')
                                                         <button type="submit" 
                                                                 class="btn btn-outline-success"
                                                                 onclick="return confirm('Setujui UMKM ini?')">
@@ -106,7 +106,7 @@
                                                 <td>{{ $user->email }}</td>
                                                 <td>
                                                     <span class="badge 
-                                                        {{ $user->role === 'admin' ? 'bg-primary' : 'bg-secondary' }}">
+                                                        {{ $user->role === 'admin' ? 'bg-purple' : 'bg-secondary' }}">
                                                         {{ $user->role }}
                                                     </span>
                                                 </td>
@@ -164,7 +164,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="previewContent">
-                    <!-- Content will be loaded via AJAX -->
+                    <div class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Memuat data UMKM...</p>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -173,9 +178,18 @@
         </div>
     </div>
 
-    @push('scripts')
     <script>
-        function previewUmkm(umkmId) {
+        function loadUmkmData(umkmId) {
+            // Tampilkan loading state
+            document.getElementById('previewContent').innerHTML = `
+                <div class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Memuat data UMKM...</p>
+                </div>
+            `;
+
             fetch(`/umkm/${umkmId}/preview`)
                 .then(response => response.json())
                 .then(data => {
@@ -227,30 +241,45 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <strong>Lokasi:</strong><br>
-                                    <div class="map-container mt-2" style="height: 200px;">
-                                        <iframe src="${umkm.gmaps_embed}" 
-                                                width="100%" height="100%" style="border:0;" 
-                                                allowfullscreen="" loading="lazy"></iframe>
-                                    </div>
+                                    <strong>Lokasi:</strong> ${umkm.gmaps_embed}<br>
                                 </div>
                             </div>
                         `;
                         
                         document.getElementById('previewContent').innerHTML = previewContent;
-                        const previewModal = new bootstrap.Modal(document.getElementById('previewModal'));
-                        previewModal.show();
+                    } else {
+                        document.getElementById('previewContent').innerHTML = `
+                            <div class="alert alert-danger">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                Gagal memuat data UMKM
+                            </div>
+                        `;
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Gagal memuat data UMKM');
+                    document.getElementById('previewContent').innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Terjadi kesalahan saat memuat data
+                        </div>
+                    `;
                 });
         }
-    </script>
-    @endpush
 
-    @push('styles')
+        // Reset modal content ketika modal ditutup
+        document.getElementById('previewModal').addEventListener('hidden.bs.modal', function () {
+            document.getElementById('previewContent').innerHTML = `
+                <div class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Memuat data UMKM...</p>
+                </div>
+            `;
+        });
+    </script>
+
     <style>
         .bg-purple {
             background-color: #6f42c1 !important;
@@ -264,5 +293,4 @@
             font-size: 0.75rem;
         }
     </style>
-    @endpush
 </x-app-layout>

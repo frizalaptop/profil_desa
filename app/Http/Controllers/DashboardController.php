@@ -19,10 +19,4 @@ class DashboardController extends Controller
         
         return view('dashboard');
     }
-
-    // Di UmkmController
-    public function preview(Umkm $umkm)
-    {
-        return view('umkm.preview', compact('umkm'));
-    }
 }

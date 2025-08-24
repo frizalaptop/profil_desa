@@ -8,19 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        // Hanya role admin yang bisa mengakses
-        if (Auth::user()->role !== 'admin') {
-            abort(403, 'Unauthorized action.');
-        }
-
-        // Ambil semua user kecuali diri sendiri
-        $users = User::where('id', '!=', Auth::id())->get();
-
-        return view('users.index', compact('users'));
-    }
-
     public function promote(User $user)
     {
         // Hanya role admin yang bisa mengakses
