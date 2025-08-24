@@ -230,4 +230,10 @@ public function store(Request $request)
                 ->with('error', 'Gagal menghapus UMKM. Error: ' . $e->getMessage());
         }
     }
+
+    public function verify(Umkm $umkm)
+    {
+        $umkm->update(['verified' => true]);
+        return redirect()->back()->with('success', 'UMKM berhasil diverifikasi');
+    }
 }

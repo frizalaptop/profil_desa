@@ -194,7 +194,7 @@
                     </div>
                     <div class="card-body">
                         <div class="map-container">
-                            {!! $umkm->gmaps_embed !!}
+                            <a href="{!! $umkm->gmaps_embed !!}">{!! $umkm->gmaps_embed !!}</a>
                         </div>
                     </div>
                 </div>

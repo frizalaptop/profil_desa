@@ -55,10 +55,8 @@
                                                 id="category" name="category" >
                                             <option value="" selected disabled>Pilih Kategori</option>
                                             <option value="Makanan" {{ old('category') == 'Makanan' ? 'selected' : '' }}>Makanan</option>
-                                            <option value="Kerajinan" {{ old('category') == 'Kerajinan' ? 'selected' : '' }}>Kerajinan</option>
+                                            <option value="BUMDES" {{ old('category') == 'BUMDES' ? 'selected' : '' }}>BUMDES</option>
                                             <option value="Pertanian" {{ old('category') == 'Pertanian' ? 'selected' : '' }}>Pertanian</option>
-                                            <option value="Jasa" {{ old('category') == 'Jasa' ? 'selected' : '' }}>Jasa</option>
-                                            <option value="Lainnya" {{ old('category') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
                                         </select>
                                         @error('category')
                                             <div class="invalid-feedback">{{ $message }}</div>

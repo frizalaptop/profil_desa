@@ -1,0 +1,59 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class UserController extends Controller
+{
+    public function index()
+    {
+        // Hanya role admin yang bisa mengakses
+        if (Auth::user()->role !== 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // Ambil semua user kecuali diri sendiri
+        $users = User::where('id', '!=', Auth::id())->get();
+
+        return view('users.index', compact('users'));
+    }
+
+    public function promote(User $user)
+    {
+        // Hanya role admin yang bisa mengakses
+        if (Auth::user()->role !== 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // Validasi bahwa user target bukan diri sendiri
+        if ($user->id === Auth::id()) {
+            return back()->with('error', 'Anda tidak bisa mengubah role diri sendiri.');
+        }
+
+        // Ubah role user target menjadi admin
+        $user->update(['role' => 'admin']);
+
+        return back()->with('success', 'Role user berhasil diubah menjadi Admin.');
+    }
+
+    public function demote(User $user)
+    {
+        // Hanya role admin yang bisa mengakses
+        if (Auth::user()->role !== 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // Validasi bahwa user target bukan diri sendiri
+        if ($user->id === Auth::id()) {
+            return back()->with('error', 'Anda tidak bisa mengubah role diri sendiri.');
+        }
+
+        // Ubah role user target menjadi admin
+        $user->update(['role' => 'user']);
+
+        return back()->with('success', 'Role user berhasil diubah menjadi user.');
+    }
+}

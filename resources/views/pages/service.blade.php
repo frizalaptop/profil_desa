@@ -139,7 +139,7 @@
                                         <i class="fas fa-map-marker-alt me-1"></i> Posyandu tiap dusun
                                     </span>
                                     <span class="badge bg-success bg-opacity-10 text-success">
-                                        <i class="fas fa-clock me-1"></i> 08.00 - 10:00
+                                        <i class="fas fa-clock me-1"></i>Awal Bulan 08.00 - 10:00
                                     </span>
                                 </div>
                                 <hr>

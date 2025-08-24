@@ -62,7 +62,7 @@
                                         <select class="form-select @error('category') is-invalid @enderror" 
                                                 id="category" name="category" required>
                                             <option value="" disabled>Pilih Kategori</option>
-                                            @foreach(['Makanan', 'Kerajinan', 'Pertanian', 'Jasa', 'Lainnya'] as $option)
+                                            @foreach(['Makanan', 'BUMDES', 'Pertanian'] as $option)
                                                 <option value="{{ $option }}" 
                                                     {{ old('category', $umkm->category) == $option ? 'selected' : '' }}>
                                                     {{ $option }}
