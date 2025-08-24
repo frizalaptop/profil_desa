@@ -53,8 +53,7 @@
           <select class="form-select">
             <option selected>Semua Kategori</option>
             <option>Makanan</option>
-            <option>Kerajinan</option>
-            <option>Jasa</option>
+            <option>BUMDES</option>
             <option>Pertanian</option>
           </select>
         </div>
@@ -108,123 +107,12 @@
           </div>
         @endforelse
 
-        <!-- UMKM 1 -->
-        <div class="col-md-6 col-lg-4">
-          <div class="umkm-card card h-100 shadow-sm">
-            <img src="https://www.ruangriang.co.id/wp-content/uploads/2023/07/05c39369e7521189f942a62d18777283.jpg" 
-                 class="map-static card-img-top" alt="Lokasi UMKM">
-            <div class="card-body">
-              <span class="badge badge-category mb-2">Makanan</span>
-              <h5 class="card-title">Dorokdok</h5>
-              <p class="card-text text-muted">
-                <i class="fas fa-user me-2"></i> Ibu Siti Rahayu<br>
-                <i class="fas fa-map-marker-alt me-2"></i> Dusun Krajan, RT 02/RW 04
-              </p>
-              <p class="card-text">Kerupuk kulit sapi siap saji.</p>
-              
-              <div class="btn-action-group">
-                <a href="https://wa.me/6281234567890" class="btn btn-sm btn-success">
-                  <i class="fab fa-whatsapp me-1"></i> Hubungi
-                </a>
-                
-                @auth
-                  <a href="/umkm/1/edit" class="btn btn-sm btn-outline-primary">
-                    <i class="fas fa-edit me-1"></i> Perbarui
-                  </a>
-                @else
-                  <a href="/umkm/1" class="btn btn-sm btn-outline-info">
-                    <i class="fas fa-info-circle me-1"></i> Detail
-                  </a>
-                @endauth
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- UMKM 2 -->
-        <div class="col-md-6 col-lg-4">
-          <div class="umkm-card card h-100 shadow-sm">
-            <img src="https://sorot.co/images/2023/06/wonosobo/220229_5282_fotoistimewa20230611220229.jpg" 
-                 class="map-static card-img-top" alt="Lokasi UMKM">
-            <div class="card-body">
-              <span class="badge badge-category mb-2">Makanan</span>
-              <h5 class="card-title">Opak Singkong</h5>
-              <p class="card-text text-muted">
-                <i class="fas fa-user me-2"></i> Bapak Sutrisno<br>
-                <i class="fas fa-map-marker-alt me-2"></i> Dusun Ngemplak, RT 01/RW 03
-              </p>
-              <p class="card-text">Opak singkong mentah siap produksi.</p>
-              
-              <div class="btn-action-group">
-                <a href="https://wa.me/6281234567891" class="btn btn-sm btn-success">
-                  <i class="fab fa-whatsapp me-1"></i> Hubungi
-                </a>
-                
-                @auth
-                  <a href="/umkm/2/edit" class="btn btn-sm btn-outline-primary">
-                    <i class="fas fa-edit me-1"></i> Perbarui
-                  </a>
-                @else
-                  <a href="/umkm/2" class="btn btn-sm btn-outline-info">
-                    <i class="fas fa-info-circle me-1"></i> Detail
-                  </a>
-                @endauth
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- UMKM 3 -->
-        <div class="col-md-6 col-lg-4">
-          <div class="umkm-card card h-100 shadow-sm">
-            <img src="https://images.tokopedia.net/img/HCoJbh/2025/3/4/bdba2c17-ebb2-4a28-ad50-40c870c0d7c7.jpg" 
-                 class="map-static card-img-top" alt="Lokasi UMKM">
-            <div class="card-body">
-              <span class="badge badge-category mb-2">Pertanian</span>
-              <h5 class="card-title">Kripik Singkong</h5>
-              <p class="card-text text-muted">
-                <i class="fas fa-user me-2"></i> Agus Mansur<br>
-                <i class="fas fa-map-marker-alt me-2"></i> Dusun Ngadirojo, RT 05/RW 02
-              </p>
-              <p class="card-text">Kripik singkong dengan aneka bumbu.</p>
-              
-              <div class="btn-action-group">
-                <a href="https://wa.me/6281234567892" class="btn btn-sm btn-success">
-                  <i class="fab fa-whatsapp me-1"></i> Hubungi
-                </a>
-                
-                @auth
-                  <a href="/umkm/3/edit" class="btn btn-sm btn-outline-primary">
-                    <i class="fas fa-edit me-1"></i> Perbarui
-                  </a>
-                @else
-                  <a href="/umkm/3" class="btn btn-sm btn-outline-info">
-                    <i class="fas fa-info-circle me-1"></i> Detail
-                  </a>
-                @endauth
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- Tambahkan UMKM lainnya di sini -->
       </div>
 
-      <!-- Pagination (Opsional) -->
-      <nav class="mt-5">
-        <ul class="pagination justify-content-center">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
-          </li>
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+      <div class="mt-4">
+          {{ $umkms->links() }}
+      </div>
 </section>
 
 @endsection('content')

@@ -15,6 +15,7 @@ class Umkm extends Model
         'description',
         'gmaps_embed',
         'product_photo',
-        'agreement'
+        'agreement',
+        'verified'
     ];
 }

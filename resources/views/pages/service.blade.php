@@ -21,20 +21,6 @@
 <!-- Daftar Layanan -->
 <section class="py-5">
     <div class="container">
-        <div class="row mb-4">
-            <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Cari layanan...">
-            </div>
-            <div class="col-md-6 mt-2 mt-md-0">
-                <select class="form-select">
-                    <option selected>Semua Kategori</option>
-                    <option>Administrasi</option>
-                    <option>Kesehatan</option>
-                    <option>Pendidikan</option>
-                    <option>Sosial</option>
-                </select>
-            </div>
-        </div>
 
         <!-- Accordion Layanan -->
         <div class="accordion" id="layananAccordion">
@@ -47,7 +33,7 @@
                             data-bs-target="#layanan1" 
                             aria-expanded="true" 
                             aria-controls="layanan1">
-                        <i class="fas fa-file-alt me-3"></i> Pembuatan Surat Keterangan
+                        <i class="fas fa-file-alt me-3"></i> Layanan Surat Menyurat
                     </button>
                 </h2>
                 <div id="layanan1" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#layananAccordion">
@@ -61,14 +47,13 @@
                                 <h5 class="text-success">Deskripsi Layanan</h5>
                                 <p>Layanan pembuatan berbagai surat keterangan resmi dari desa seperti:</p>
                                 <ul>
-                                    <li>Surat Keterangan Domisili</li>
-                                    <li>Surat Keterangan Tidak Mampu</li>
-                                    <li>Surat Keterangan Usaha</li>
-                                    <li>Surat Keterangan Kelahiran</li>
+                                    <li>Surat Kematian</li>
+                                    <li>Surat Pengantar (KTP, KK, Akte, Nikah, KTA)</li>
+                                    <li>Surat Keterangan (Ahli Waris, BPJS, Usaha, Kepemilikan Tanah)</li>
                                 </ul>
                                 <div class="d-flex flex-wrap gap-2">
                                     <span class="badge bg-success bg-opacity-10 text-success">
-                                        <i class="fas fa-clock me-1"></i> Proses 1-3 Hari Kerja
+                                        <i class="fas fa-clock me-1"></i> Proses 1 Hari Kerja
                                     </span>
                                     <span class="badge bg-success bg-opacity-10 text-success">
                                         <i class="fas fa-money-bill-wave me-1"></i> Gratis
@@ -107,17 +92,14 @@
                                 <h5 class="text-success">Deskripsi Layanan</h5>
                                 <p>Layanan pendaftaran dan informasi berbagai program bantuan sosial dari pemerintah:</p>
                                 <ul>
-                                    <li>Bantuan Langsung Tunai (BLT)</li>
-                                    <li>Program Keluarga Harapan (PKH)</li>
-                                    <li>Bantuan Pangan Non Tunai (BPNT)</li>
-                                    <li>Bantuan UMKM</li>
+                                    <li>Bantuan Langsung Tunai Dana Desa (BLTDD)</li>
                                 </ul>
                                 <div class="alert alert-success bg-success bg-opacity-10 border-0">
                                     <i class="fas fa-info-circle me-2"></i> 
-                                    Pendaftaran dibuka setiap bulan Januari dan Juli
+                                    Pendaftaran dibuka setiap akhir bulan.
                                 </div>
                                 <a href="#" class="btn btn-outline-success">
-                                    <i class="fas fa-calendar-check me-1"></i> Jadwal Pendaftaran
+                                    <i class="fas fa-calendar-check me-1"></i> Detail Informasi
                                 </a>
                             </div>
                         </div>
@@ -162,11 +144,8 @@
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-between">
-                                    <a href="#" class="btn btn-success">
-                                        <i class="fas fa-phone-alt me-1"></i> Hubungi Bidan
-                                    </a>
                                     <a href="#" class="btn btn-outline-success">
-                                        <i class="fas fa-calendar-alt me-1"></i> Jadwal Lengkap
+                                        <i class="fas fa-calendar-alt me-1"></i> Detail Informasi
                                     </a>
                                 </div>
                             </div>

@@ -22,13 +22,13 @@
     <div class="row align-items-center">
       <div class="col-lg-6 mb-4 mb-lg-0">
         <h2 class="fw-bold mb-4">Profil Desa</h2>
-        <p>Desa Maju Makmur terletak di Kecamatan Sejahtera, Kabupaten Makmur, Provinsi Harmoni. Desa ini dikenal dengan keindahan alamnya yang asri dan masyarakatnya yang ramah.</p>
+        <p>Desa Ciangir terletak di Kecamatan Cibingbin, Kabupaten Kuningan, Provinsi Jawa Barat. Desa ini dikenal dengan keindahan alamnya yang asri dan masyarakatnya yang ramah.</p>
         <div class="row mt-4">
           <div class="col-6">
             <div class="d-flex align-items-center mb-3">
               <i class="fas fa-users feature-icon me-3"></i>
               <div>
-                <h3 class="h5 mb-0">3.245</h3>
+                <h3 class="h5 mb-0">3.205 (Juni)</h3>
                 <small>Jiwa Penduduk</small>
               </div>
             </div>
@@ -117,13 +117,13 @@
 <section class="py-5 bg-light">
   <div class="container">
     <h2 class="text-center fw-bold mb-5">Potensi Desa</h2>
-    <div class="row g-4">
+    <div class="row g-4 justify-content-center">
       <div class="col-md-6 col-lg-3">
         <div class="card h-100 shadow-sm border-0">
           <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Pertanian">
           <div class="card-body">
             <h5 class="card-title">Pertanian</h5>
-            <p class="card-text">Hasil utama padi, jagung, dan sayuran organik.</p>
+            <p class="card-text">Sawah yang luas untuk menghasilkan padi.</p>
           </div>
         </div>
       </div>
@@ -131,17 +131,8 @@
         <div class="card h-100 shadow-sm border-0">
           <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" class="card-img-top" alt="Perkebunan">
           <div class="card-body">
-            <h5 class="card-title">Perkebunan</h5>
-            <p class="card-text">Kopi, cengkeh, dan buah-buahan lokal.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="card h-100 shadow-sm border-0">
-          <img src="https://images.unsplash.com/photo-1584466977773-e625c37cdd50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" class="card-img-top" alt="Kerajinan">
-          <div class="card-body">
-            <h5 class="card-title">Kerajinan</h5>
-            <p class="card-text">Anyaman bambu dan kerajinan tangan tradisional.</p>
+            <h5 class="card-title">Peternakan</h5>
+            <p class="card-text">Ayam, Kambing, dan Sapi.</p>
           </div>
         </div>
       </div>
@@ -150,7 +141,7 @@
           <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Wisata">
           <div class="card-body">
             <h5 class="card-title">Wisata</h5>
-            <p class="card-text">Air terjun dan pemandangan alam yang memukau.</p>
+            <p class="card-text">Cipanas sebagai pemandian air panas.</p>
           </div>
         </div>
       </div>
@@ -174,13 +165,13 @@
           <h5 class="d-flex align-items-center">
             <i class="fas fa-phone-alt me-3"></i> Telepon
           </h5>
-          <p>(021) 1234-5678</p>
+          <p>-</p>
         </div>
         <div class="mb-3">
           <h5 class="d-flex align-items-center">
             <i class="fas fa-envelope me-3"></i> Email
           </h5>
-          <p>info@desamajumakmur.id</p>
+          <p>-</p>
         </div>
         <div class="d-flex mt-4">
           <a href="#" class="text-white me-3 fs-4"><i class="fab fa-facebook"></i></a>
