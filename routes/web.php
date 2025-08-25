@@ -30,7 +30,12 @@ Route::put('/umkm/{umkm}/verify', [UmkmController::class, 'verify'])
     ->middleware(['auth', 'verified'])
     ->name('umkm.verify');
 
-Route::resource('umkm', UmkmController::class);
+Route::middleware(['auth', 'verified'])
+    ->group(function() {
+        Route::resource('umkm', UmkmController::class)
+            ->withoutMiddlewareFor(['index', 'show'], ['auth', 'verified']);
+    });
+
 
 Route::controller( UserController::class)->group(function () {
     Route::put('users/{user}/promote', 'promote')
