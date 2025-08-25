@@ -93,7 +93,6 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th scope="col">Nama</th>
-                                        <th scope="col">Email</th>
                                         <th scope="col">Role</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
@@ -103,7 +102,6 @@
                                         @if($user->id !== auth()->id())
                                             <tr>
                                                 <td class="fw-medium">{{ $user->name }}</td>
-                                                <td>{{ $user->email }}</td>
                                                 <td>
                                                     <span class="badge 
                                                         {{ $user->role === 'admin' ? 'bg-purple' : 'bg-secondary' }}">

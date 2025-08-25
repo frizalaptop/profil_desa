@@ -110,8 +110,19 @@ public function store(Request $request)
      */
     public function edit(Umkm $umkm)
     {
-        $umkm = Umkm::findOrFail($umkm->id);
-        return view('pages.umkm.edit', compact('umkm'));
+        try {
+            // Cek apakah user adalah admin
+            if (auth()->user()->role !== 'admin') {
+                throw new \Exception('Unauthorized access. Admin role required.');
+            }
+
+            $umkm = Umkm::findOrFail($umkm->id);
+            return view('pages.umkm.edit', compact('umkm'));
+            
+        } catch (\Exception $e) {
+            return redirect()->route('umkm.index')
+                ->with('error', 'Gagal mengakses halaman edit. Error: ' . $e->getMessage());
+        }
     }
 
     /** 
@@ -154,6 +165,9 @@ public function store(Request $request)
         ]);
             
         try {
+            if (auth()->user()->role !== 'admin') {
+                throw new \Exception('Akses dilarang. Hanya admin.');
+            }
             // Temukan UMKM yang akan diupdate
             $umkm = Umkm::findOrFail($id);
             
@@ -208,6 +222,10 @@ public function store(Request $request)
     public function destroy($id)
     {
         try {
+            if (auth()->user()->role !== 'admin') {
+                throw new \Exception('Akses dilarang. Hanya admin.');
+            }
+            
             // Temukan UMKM yang akan dihapus
             $umkm = Umkm::findOrFail($id);
             

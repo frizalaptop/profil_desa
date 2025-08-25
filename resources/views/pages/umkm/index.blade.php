@@ -82,13 +82,19 @@
                 </a>
                 
                 @auth
-                  <a href="{{ route('umkm.edit', $umkm->id) }}" class="btn btn-sm btn-outline-primary">
-                    <i class="fas fa-edit me-1"></i> Perbarui
-                  </a>
+                    @if(auth()->user()->role === 'admin')
+                        <a href="{{ route('umkm.edit', $umkm->id) }}" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-edit me-1"></i> Perbarui
+                        </a>
+                    @else
+                        <a href="{{ route('umkm.show', $umkm->id) }}" class="btn btn-sm btn-outline-info">
+                            <i class="fas fa-info-circle me-1"></i> Detail
+                        </a>
+                    @endif
                 @else
-                  <a href="{{ route('umkm.show', $umkm->id) }}" class="btn btn-sm btn-outline-info">
-                    <i class="fas fa-info-circle me-1"></i> Detail
-                  </a>
+                    <a href="{{ route('umkm.show', $umkm->id) }}" class="btn btn-sm btn-outline-info">
+                        <i class="fas fa-info-circle me-1"></i> Detail
+                    </a>
                 @endauth
               </div>
             </div>

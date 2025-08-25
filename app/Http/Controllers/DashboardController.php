@@ -12,7 +12,9 @@ class DashboardController extends Controller
     {
         if (auth()->user()->role === 'admin') {
             $pendingUmkms = Umkm::where('verified', false)->get();
-            $users = User::where('id', '!=', auth()->id())->get();
+            $users = User::where('id', '!=', auth()->id())
+                ->where('email_verified_at', '!=', null)
+                ->get();
             
             return view('dashboard', compact('pendingUmkms', 'users'));
         }

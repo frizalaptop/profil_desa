@@ -50,7 +50,7 @@
                                     <div class="col-md-6">
                                         <label for="name" class="form-label">Nama Usaha</label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror" 
-                                               id="name" name="name" value="{{ old('name', $umkm->name) }}" required>
+                                               id="name" name="name" value="{{ old('name', $umkm->name) }}" >
                                         @error('name')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -60,7 +60,7 @@
                                     <div class="col-md-6">
                                         <label for="category" class="form-label">Kategori</label>
                                         <select class="form-select @error('category') is-invalid @enderror" 
-                                                id="category" name="category" required>
+                                                id="category" name="category" >
                                             <option value="" disabled>Pilih Kategori</option>
                                             @foreach(['Makanan', 'BUMDES', 'Pertanian'] as $option)
                                                 <option value="{{ $option }}" 
@@ -78,7 +78,7 @@
                                     <div class="col-md-6">
                                         <label for="owner" class="form-label">Nama Pemilik</label>
                                         <input type="text" class="form-control @error('owner') is-invalid @enderror" 
-                                               id="owner" name="owner" value="{{ old('owner', $umkm->owner) }}" required>
+                                               id="owner" name="owner" value="{{ old('owner', $umkm->owner) }}" >
                                         @error('owner')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -89,7 +89,7 @@
                                         <label for="phone" class="form-label">No. Telepon/WhatsApp</label>
                                         <input type="tel" class="form-control @error('phone') is-invalid @enderror" 
                                                id="phone" name="phone" value="{{ old('phone', $umkm->phone) }}" 
-                                               placeholder="Contoh: 62*******" required>
+                                               placeholder="Contoh: 62*******" >
                                         @error('phone')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -99,7 +99,7 @@
                                     <div class="col-12">
                                         <label for="address" class="form-label">Alamat Lengkap</label>
                                         <textarea class="form-control @error('address') is-invalid @enderror" 
-                                                  id="address" name="address" rows="3" required>{{ old('address', $umkm->address) }}</textarea>
+                                                  id="address" name="address" rows="3" >{{ old('address', $umkm->address) }}</textarea>
                                         @error('address')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -109,7 +109,7 @@
                                     <div class="col-12">
                                         <label for="description" class="form-label">Deskripsi Usaha</label>
                                         <textarea class="form-control @error('description') is-invalid @enderror" 
-                                                  id="description" name="description" rows="5" required>{{ old('description', $umkm->description) }}</textarea>
+                                                  id="description" name="description" rows="5" >{{ old('description', $umkm->description) }}</textarea>
                                         <small class="text-muted">Jelaskan produk/jasa yang ditawarkan</small>
                                         @error('description')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -126,7 +126,7 @@
                                 <div class="mb-3">
                                     <label for="gmaps_embed" class="form-label">Link Google Maps</label>
                                     <input type="url" class="form-control @error('gmaps_embed') is-invalid @enderror" 
-                                           id="gmaps_embed" name="gmaps_embed" value="{{ old('gmaps_embed', $umkm->gmaps_embed) }}" required>
+                                           id="gmaps_embed" name="gmaps_embed" value="{{ old('gmaps_embed', $umkm->gmaps_embed) }}" >
                                     @error('gmaps_embed')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror

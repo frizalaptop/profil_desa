@@ -91,21 +91,6 @@
                                 <i class="fab fa-whatsapp fa-lg"></i>
                                 Hubungi via WhatsApp
                             </a>
-                            
-                            @auth
-                            <div class="btn-group" role="group">
-                                <a href="{{ route('umkm.edit', $umkm->id) }}" 
-                                   class="btn btn-outline-primary">
-                                    <i class="fas fa-edit me-1"></i> Edit
-                                </a>
-                                <button type="button" 
-                                        class="btn btn-outline-danger" 
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#deleteModal">
-                                    <i class="fas fa-trash-alt me-1"></i> Hapus
-                                </button>
-                            </div>
-                            @endauth
                         </div>
                     </div>
                 </div>
@@ -202,33 +187,6 @@
         </div>
     </div>
 </section>
-
-<!-- Modal Konfirmasi Hapus -->
-@auth
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus UMKM</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Apakah Anda yakin ingin menghapus UMKM "<strong>{{ $umkm->name }}</strong>"?</p>
-                <p class="text-danger">Tindakan ini tidak dapat dibatalkan. Semua data UMKM akan dihapus secara permanen.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <form action="{{ route('umkm.destroy', $umkm->id) }}" method="POST" class="d-inline">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Ya, Hapus</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-@endauth
-
 @endsection
 
 @section('scripts')
