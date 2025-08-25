@@ -83,10 +83,9 @@ public function store(Request $request)
         ]);
 
         return redirect()->route('umkm.index')
-            ->with('success', 'UMKM berhasil didaftarkan! Menunggu.');
+            ->with('success', 'UMKM berhasil didaftarkan! Menunggu verifikasi admin.');
 
     } catch (\Exception $e) {
-        dd($e->getMessage());
         // Hapus file yang sudah terupload jika ada error
         if (isset($productPhotoPath) && Storage::disk('public')->exists($productPhotoPath)) {
             Storage::disk('public')->delete($productPhotoPath);
@@ -113,7 +112,7 @@ public function store(Request $request)
         try {
             // Cek apakah user adalah admin
             if (auth()->user()->role !== 'admin') {
-                throw new \Exception('Unauthorized access. Admin role required.');
+                throw new \Exception('Akses dilarang. Hanya admin.');
             }
 
             $umkm = Umkm::findOrFail($umkm->id);
