@@ -60,9 +60,16 @@
                                     </span>
                                 </div>
                                 <hr>
-                                <a href="#" class="btn btn-success mt-2">
-                                    <i class="fas fa-download me-1"></i> Download Persyaratan
-                                </a>
+                                @if(Storage::disk('public')->exists('services/surat.pdf'))
+                                    <a href="{{ Storage::url('services/surat.pdf') }}" target="_blank" class="btn btn-success mt-2">
+                                        <i class="fas fa-download me-1"></i> Download Persyaratan
+                                    </a>
+                                @else
+                                    <div class="alert alert-warning mt-2">
+                                        <i class="fas fa-exclamation-triangle me-2"></i>
+                                        File persyaratan belum tersedia
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -98,9 +105,16 @@
                                     <i class="fas fa-info-circle me-2"></i> 
                                     Pendaftaran dibuka setiap akhir bulan.
                                 </div>
-                                <a href="#" class="btn btn-outline-success">
-                                    <i class="fas fa-calendar-check me-1"></i> Detail Informasi
-                                </a>
+                                @if(Storage::disk('public')->exists('services/bansos.pdf'))
+                                    <a href="{{ Storage::url('services/bansos.pdf') }}" target="_blank" class="btn btn-outline-success">
+                                        <i class="fas fa-download me-1"></i> Detail Informasi
+                                    </a>
+                                @else
+                                    <div class="alert alert-warning">
+                                        <i class="fas fa-exclamation-triangle me-2"></i>
+                                        Informasi bantuan sosial belum tersedia
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -144,9 +158,16 @@
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-between">
-                                    <a href="#" class="btn btn-outline-success">
-                                        <i class="fas fa-calendar-alt me-1"></i> Detail Informasi
-                                    </a>
+                                    @if(Storage::disk('public')->exists('services/posyandu.pdf'))
+                                        <a href="{{ Storage::url('services/posyandu.pdf') }}" target="_blank" class="btn btn-outline-success">
+                                            <i class="fas fa-download me-1"></i> Detail Informasi
+                                        </a>
+                                    @else
+                                        <div class="alert alert-warning">
+                                            <i class="fas fa-exclamation-triangle me-2"></i>
+                                            Informasi posyandu belum tersedia
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -171,6 +192,11 @@
     .accordion-item {
         border-radius: 8px !important;
         overflow: hidden;
+    }
+    .alert-warning {
+        background-color: rgba(255,193,7,0.1);
+        border: 1px solid rgba(255,193,7,0.3);
+        color: #856404;
     }
 </style>
 @endsection

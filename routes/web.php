@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,10 @@ Route::get('/home', function () {
 Route::get('/service', function () {
     return view('pages.service');
 });
+
+Route::post('/services/upload', [ServiceController::class, 'upload'])
+    ->middleware(['auth', 'verified'])
+    ->name('services.upload');
 
 Route::get('/umkm/{umkm}/preview', [UmkmController::class, 'preview'])
     ->middleware(['auth', 'verified'])

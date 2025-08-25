@@ -79,6 +79,137 @@
                     </div>
                 </div>
 
+                <!-- Section Manajemen Layanan Desa -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white border-bottom">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-file-alt text-info me-2"></i>
+                            Manajemen Layanan Desa
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Form Surat Menyurat -->
+                        <div class="mb-4 p-3 border rounded">
+                            <h6 class="mb-3">
+                                <i class="fas fa-envelope text-primary me-2"></i>
+                                Persyaratan Surat Menyurat
+                            </h6>
+                            <form action="{{ route('services.upload') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="service_type" value="surat">
+                                
+                                <div class="row align-items-end">
+                                    <div class="col-md-8">
+                                        <div class="mb-2">
+                                            <label class="form-label">File Persyaratan (PDF)</label>
+                                            <input type="file" class="form-control" name="file" accept=".pdf" required>
+                                            <small class="text-muted">Format: PDF, maksimal 5MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            <i class="fas fa-upload me-1"></i> Upload
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                @if(Storage::disk('public')->exists('services/surat.pdf'))
+                                <div class="mt-2">
+                                    <small class="text-success">
+                                        <i class="fas fa-check-circle me-1"></i>
+                                        File tersedia: 
+                                        <a href="{{ Storage::url('services/surat.pdf') }}" target="_blank" class="text-decoration-none">
+                                            Lihat File
+                                        </a>
+                                        ({{ round(Storage::disk('public')->size('services/surat.pdf') / 1024, 1) }} KB)
+                                    </small>
+                                </div>
+                                @endif
+                            </form>
+                        </div>
+
+                        <!-- Form Bantuan Sosial -->
+                        <div class="mb-4 p-3 border rounded">
+                            <h6 class="mb-3">
+                                <i class="fas fa-hand-holding-heart text-success me-2"></i>
+                                Informasi Bantuan Sosial
+                            </h6>
+                            <form action="{{ route('services.upload') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="service_type" value="bansos">
+                                
+                                <div class="row align-items-end">
+                                    <div class="col-md-8">
+                                        <div class="mb-2">
+                                            <label class="form-label">File Informasi (PDF)</label>
+                                            <input type="file" class="form-control" name="file" accept=".pdf" required>
+                                            <small class="text-muted">Format: PDF, maksimal 5MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button type="submit" class="btn btn-success w-100">
+                                            <i class="fas fa-upload me-1"></i> Upload
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                @if(Storage::disk('public')->exists('services/bansos.pdf'))
+                                <div class="mt-2">
+                                    <small class="text-success">
+                                        <i class="fas fa-check-circle me-1"></i>
+                                        File tersedia: 
+                                        <a href="{{ Storage::url('services/bansos.pdf') }}" target="_blank" class="text-decoration-none">
+                                            Lihat File
+                                        </a>
+                                        ({{ round(Storage::disk('public')->size('services/bansos.pdf') / 1024, 1) }} KB)
+                                    </small>
+                                </div>
+                                @endif
+                            </form>
+                        </div>
+
+                        <!-- Form Posyandu & Kesehatan -->
+                        <div class="p-3 border rounded">
+                            <h6 class="mb-3">
+                                <i class="fas fa-heartbeat text-danger me-2"></i>
+                                Informasi Posyandu & Kesehatan
+                            </h6>
+                            <form action="{{ route('services.upload') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="service_type" value="posyandu">
+                                
+                                <div class="row align-items-end">
+                                    <div class="col-md-8">
+                                        <div class="mb-2">
+                                            <label class="form-label">File Informasi (PDF)</label>
+                                            <input type="file" class="form-control" name="file" accept=".pdf" required>
+                                            <small class="text-muted">Format: PDF, maksimal 5MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button type="submit" class="btn btn-danger w-100">
+                                            <i class="fas fa-upload me-1"></i> Upload
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                @if(Storage::disk('public')->exists('services/posyandu.pdf'))
+                                <div class="mt-2">
+                                    <small class="text-success">
+                                        <i class="fas fa-check-circle me-1"></i>
+                                        File tersedia: 
+                                        <a href="{{ Storage::url('services/posyandu.pdf') }}" target="_blank" class="text-decoration-none">
+                                            Lihat File
+                                        </a>
+                                        ({{ round(Storage::disk('public')->size('services/posyandu.pdf') / 1024, 1) }} KB)
+                                    </small>
+                                </div>
+                                @endif
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Section Manajemen Users -->
                 <div class="card shadow-sm">
                     <div class="card-header bg-white border-bottom">
@@ -289,6 +420,19 @@
         .btn-group-sm > .btn {
             padding: 0.25rem 0.5rem;
             font-size: 0.75rem;
+        }
+
+        /* ... style sebelumnya ... */
+    
+        .border {
+            border: 1px solid #dee2e6 !important;
+            border-radius: 0.375rem;
+        }
+        .btn {
+            transition: all 0.2s ease;
+        }
+        .btn:hover {
+            transform: translateY(-1px);
         }
     </style>
 </x-app-layout>

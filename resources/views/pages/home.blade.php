@@ -77,38 +77,62 @@
     <h2 class="text-center fw-bold mb-5">Layanan Desa</h2>
     <div class="row g-4">
       <!-- Card 1 -->
-      <div class="col-md-4">
+    <div class="col-md-4">
         <div class="card h-100 shadow-sm border-0">
-          <div class="card-body text-center p-4">
-            <i class="fas fa-file-alt feature-icon mb-3"></i>
-            <h5 class="card-title">Surat Keterangan</h5>
-            <p class="card-text">Pengajuan surat keterangan domisili, tidak mampu, dan surat resmi lainnya.</p>
-            <a href="#" class="btn btn-outline-success">Info Selengkapnya</a>
-          </div>
+            <div class="card-body text-center p-4">
+                <i class="fas fa-file-alt feature-icon mb-3"></i>
+                <h5 class="card-title">Surat Keterangan</h5>
+                <p class="card-text">Pengajuan surat keterangan domisili, tidak mampu, dan surat resmi lainnya.</p>
+                @if(Storage::disk('public')->exists('services/surat.pdf'))
+                    <a href="{{ Storage::url('services/surat.pdf') }}" target="_blank" class="btn btn-outline-success">
+                        <i class="fas fa-download me-1"></i> Download Info
+                    </a>
+                @else
+                    <button class="btn btn-outline-secondary" disabled>
+                        <i class="fas fa-file-excel me-1"></i> File Tidak Tersedia
+                    </button>
+                @endif
+            </div>
         </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="col-md-4">
+    </div>
+    <!-- Card 2 -->
+    <div class="col-md-4">
         <div class="card h-100 shadow-sm border-0">
-          <div class="card-body text-center p-4">
-            <i class="fas fa-hand-holding-heart feature-icon mb-3"></i>
-            <h5 class="card-title">Bantuan Sosial</h5>
-            <p class="card-text">Informasi program bantuan sosial dari pemerintah untuk warga.</p>
-            <a href="#" class="btn btn-outline-success">Info Selengkapnya</a>
-          </div>
+            <div class="card-body text-center p-4">
+                <i class="fas fa-hand-holding-heart feature-icon mb-3"></i>
+                <h5 class="card-title">Bantuan Sosial</h5>
+                <p class="card-text">Informasi program bantuan sosial dari pemerintah untuk warga.</p>
+                @if(Storage::disk('public')->exists('services/bansos.pdf'))
+                    <a href="{{ Storage::url('services/bansos.pdf') }}" target="_blank" class="btn btn-outline-success">
+                        <i class="fas fa-download me-1"></i> Download Info
+                    </a>
+                @else
+                    <button class="btn btn-outline-secondary" disabled>
+                        <i class="fas fa-file-excel me-1"></i> File Tidak Tersedia
+                    </button>
+                @endif
+            </div>
         </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="col-md-4">
+    </div>
+    <!-- Card 3 -->
+    <div class="col-md-4">
         <div class="card h-100 shadow-sm border-0">
-          <div class="card-body text-center p-4">
-            <i class="fas fa-hand-holding-medical feature-icon mb-3"></i>
-            <h5 class="card-title">Posyandu & Kesehatan</h5>
-            <p class="card-text">Layanan pemerikasaan kesehatan anak dan ibu hamil.</p>
-            <a href="#" class="btn btn-outline-success">Info Selengkapnya</a>
-          </div>
+            <div class="card-body text-center p-4">
+                <i class="fas fa-hand-holding-medical feature-icon mb-3"></i>
+                <h5 class="card-title">Posyandu & Kesehatan</h5>
+                <p class="card-text">Layanan pemeriksaan kesehatan anak dan ibu hamil.</p>
+                @if(Storage::disk('public')->exists('services/posyandu.pdf'))
+                    <a href="{{ Storage::url('services/posyandu.pdf') }}" target="_blank" class="btn btn-outline-success">
+                        <i class="fas fa-download me-1"></i> Download Info
+                    </a>
+                @else
+                    <button class="btn btn-outline-secondary" disabled>
+                        <i class="fas fa-file-excel me-1"></i> File Tidak Tersedia
+                    </button>
+                @endif
+            </div>
         </div>
-      </div>
+    </div>
     </div>
   </div>
 </section>
