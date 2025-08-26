@@ -9,25 +9,26 @@
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div class="card-guest bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 border border-gray-200">
                 <div class="mb-4 text-sm text-gray-600">
-                    {{ __('Ini adalah area aman dari aplikasi. Silakan konfirmasi password Anda sebelum melanjutkan.') }}
+                    {{ __('Lupa password Anda? Tidak masalah. Beri tahu kami alamat email Anda dan kami akan mengirimkan tautan untuk mengatur ulang password.') }}
                 </div>
 
-                <form method="POST" action="{{ route('password.confirm') }}" class="space-y-6">
+                <!-- Session Status -->
+                <x-auth-session-status class="mb-4" :status="session('status')" />
+
+                <form method="POST" action="{{ route('password.email') }}" class="space-y-6">
                     @csrf
 
-                    <!-- Password -->
+                    <!-- Email Address -->
                     <div>
-                        <x-input-label for="password" :value="__('Password')" />
-                        <x-text-input id="password" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password"
-                                    required autocomplete="current-password" />
-                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        <x-input-label for="email" :value="__('Alamat Email')" />
+                        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" 
+                                    :value="old('email')" required autofocus />
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
 
-                    <div class="flex justify-end">
+                    <div class="flex items-center justify-end">
                         <x-primary-button class="bg-green-600 hover:bg-green-700 focus:ring-green-500">
-                            {{ __('Konfirmasi') }}
+                            {{ __('Kirim Tautan Reset Password') }}
                         </x-primary-button>
                     </div>
                 </form>
