@@ -11,10 +11,33 @@ class UmkmController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $umkms = Umkm::where('verified', true)->paginate(6);
-        return view('pages.umkm.index', compact('umkms'));
+        $query = Umkm::where('verified', true);
+        
+        // Pencarian berdasarkan nama
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                ->orWhere('owner', 'like', '%' . $search . '%')
+                ->orWhere('description', 'like', '%' . $search . '%');
+            });
+        }
+        
+        // Filter berdasarkan kategori
+        if ($request->has('category') && !empty($request->category) && $request->category != 'Semua Kategori') {
+            $query->where('category', $request->category);
+        }
+        
+        $umkms = $query->paginate(6);
+        
+        // Kirim juga data kategori untuk dropdown
+        $categories = Umkm::where('verified', true)
+                        ->distinct()
+                        ->pluck('category');
+        
+        return view('pages.umkm.index', compact('umkms', 'categories'));
     }
 
     /**
