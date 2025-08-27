@@ -144,7 +144,7 @@
     <div class="row g-4 justify-content-center">
       <div class="col-md-6 col-lg-3">
         <div class="card h-100 shadow-sm border-0">
-          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Pertanian">
+          <img src="{{ asset('images/sawah.jpeg') }}" class="card-img-top" alt="Pertanian">
           <div class="card-body">
             <h5 class="card-title">Pertanian</h5>
             <p class="card-text">Sawah yang luas untuk menghasilkan padi.</p>
