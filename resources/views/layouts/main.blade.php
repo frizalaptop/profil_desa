@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <meta name="description" content="Profil resmi Desa Ciangir - Informasi, layanan, dan umkm dari Desa Ciangir.">
+    <meta name="keywords" content="Desa Ciangir, Profil Desa, Umkm Desa, Layanan Desa">
+    <meta name="author" content="Desa Ciangir">
+
     <style>
         :root {
         --primary: #459749ff;
