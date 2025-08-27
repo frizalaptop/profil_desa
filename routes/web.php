@@ -60,4 +60,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
 require __DIR__.'/auth.php';
 
 
-// Membuat update file untuk posyandu, surat keterangan dan bansos
+// google-site-verification=UoCZtNOLdM3HgLN_-EUHe6bMpNfHoUQ9fbfZ2ewzfps
