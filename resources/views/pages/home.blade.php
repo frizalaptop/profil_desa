@@ -183,7 +183,7 @@
           <h5 class="d-flex align-items-center">
             <i class="fas fa-map-marker-alt me-3"></i> Alamat Kantor Desa
           </h5>
-          <p>Jl. Raya Desa No. 123, Dusun Makmur, Kec. Sejahtera, Kab. Harmoni</p>
+          <p>Jl. Raya ciangir-cipondok, desa ciangir dusun 1 rt.1 rw 02.</p>
         </div>
         <div class="mb-3">
           <h5 class="d-flex align-items-center">
@@ -195,7 +195,7 @@
           <h5 class="d-flex align-items-center">
             <i class="fas fa-envelope me-3"></i> Email
           </h5>
-          <p>-</p>
+          <p>EmailDesaciangir2022@gmail.com</p>
         </div>
         <div class="d-flex mt-4">
           <a href="#" class="text-white me-3 fs-4"><i class="fab fa-facebook"></i></a>
