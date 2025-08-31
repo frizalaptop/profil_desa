@@ -183,7 +183,7 @@
           <h5 class="d-flex align-items-center">
             <i class="fas fa-map-marker-alt me-3"></i> Alamat Kantor Desa
           </h5>
-          <p>Jl. Raya ciangir-cipondok, desa ciangir dusun 1 rt.1 rw 02.</p>
+          <p>Jl. Raya Ciangir-Cipondok, Desa Ciangir - Dusun 1, RT.1 RW.02</p>
         </div>
         <div class="mb-3">
           <h5 class="d-flex align-items-center">
