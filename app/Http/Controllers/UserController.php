@@ -38,6 +38,10 @@ class UserController extends Controller
             return back()->with('error', 'Anda tidak bisa mengubah role diri sendiri.');
         }
 
+        if ($user->role === "kkndesaciangir19@gmail.com") {
+            return back()->with('error', 'Akun pemeliharaan tidak dapat diubah.');
+        }
+
         // Ubah role user target menjadi admin
         $user->update(['role' => 'user']);
 
