@@ -204,18 +204,19 @@
         </div>
       </div>
       <div class="col-lg-6">
-        <form>
+        <form action="{{ route('complaint.store') }}" method="POST">
+          @csrf
           <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Nama Anda">
+            <input type="text" class="form-control" placeholder="Nama Anda" name="name">
           </div>
           <div class="mb-3">
-            <input type="email" class="form-control" placeholder="Email">
+            <input type="email" class="form-control" placeholder="Email" name="email">
           </div>
           <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Subjek">
+            <input type="text" class="form-control" placeholder="Subjek" name="subject">
           </div>
           <div class="mb-3">
-            <textarea class="form-control" rows="4" placeholder="Pesan"></textarea>
+            <textarea class="form-control" rows="4" placeholder="Pesan" name="message"></textarea>
           </div>
           <button type="submit" class="btn btn-success">Kirim Pesan</button>
         </form>
