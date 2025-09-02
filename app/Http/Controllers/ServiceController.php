@@ -38,7 +38,6 @@ class ServiceController extends Controller
     {
         $services = [
             'surat' => 'Persyaratan Surat Menyurat',
-            'bansos' => 'Informasi Bantuan Sosial',
             'posyandu' => 'Informasi Posyandu & Kesehatan'
         ];
         

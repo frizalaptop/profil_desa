@@ -146,46 +146,6 @@
                             </form>
                         </div>
 
-                        <!-- Form Bantuan Sosial -->
-                        <div class="mb-4 p-3 border rounded">
-                            <h6 class="mb-3">
-                                <i class="fas fa-hand-holding-heart text-success me-2"></i>
-                                Informasi Bantuan Sosial
-                            </h6>
-                            <form action="{{ route('services.upload') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <input type="hidden" name="service_type" value="bansos">
-                                
-                                <div class="row align-items-end">
-                                    <div class="col-md-8">
-                                        <div class="mb-2">
-                                            <label class="form-label">File Informasi (PDF)</label>
-                                            <input type="file" class="form-control" name="file" accept=".pdf" required>
-                                            <small class="text-muted">Format: PDF, maksimal 5MB</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <button type="submit" class="btn btn-success w-100">
-                                            <i class="fas fa-upload me-1"></i> Upload
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                @if(Storage::disk('public')->exists('services/bansos.pdf'))
-                                <div class="mt-2">
-                                    <small class="text-success">
-                                        <i class="fas fa-check-circle me-1"></i>
-                                        File tersedia: 
-                                        <a href="{{ Storage::url('services/bansos.pdf') }}" target="_blank" class="text-decoration-none">
-                                            Lihat File
-                                        </a>
-                                        ({{ round(Storage::disk('public')->size('services/bansos.pdf') / 1024, 1) }} KB)
-                                    </small>
-                                </div>
-                                @endif
-                            </form>
-                        </div>
-
                         <!-- Form Posyandu & Kesehatan -->
                         <div class="p-3 border rounded">
                             <h6 class="mb-3">

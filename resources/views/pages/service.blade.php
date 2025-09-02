@@ -76,51 +76,6 @@
                 </div>
             </div>
 
-            <!-- Layanan 2 -->
-            <div class="accordion-item border-0 shadow-sm mb-3">
-                <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed bg-light-green bg-opacity-10 text-success fw-bold" 
-                            type="button" 
-                            data-bs-toggle="collapse" 
-                            data-bs-target="#layanan2" 
-                            aria-expanded="false" 
-                            aria-controls="layanan2">
-                        <i class="fas fa-hand-holding-heart me-3"></i> Bantuan Sosial
-                    </button>
-                </h2>
-                <div id="layanan2" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#layananAccordion">
-                    <div class="accordion-body">
-                        <div class="row">
-                            <div class="col-md-4 mb-3 mb-md-0">
-                                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
-                                     class="img-fluid rounded" alt="Bantuan Sosial">
-                            </div>
-                            <div class="col-md-8">
-                                <h5 class="text-success">Deskripsi Layanan</h5>
-                                <p>Layanan pendaftaran dan informasi berbagai program bantuan sosial dari pemerintah:</p>
-                                <ul>
-                                    <li>Bantuan Langsung Tunai Dana Desa (BLTDD)</li>
-                                </ul>
-                                <div class="alert alert-success bg-success bg-opacity-10 border-0">
-                                    <i class="fas fa-info-circle me-2"></i> 
-                                    Pendaftaran dibuka setiap akhir bulan.
-                                </div>
-                                @if(Storage::disk('public')->exists('services/bansos.pdf'))
-                                    <a href="{{ Storage::url('services/bansos.pdf') }}" target="_blank" class="btn btn-outline-success">
-                                        <i class="fas fa-download me-1"></i> Detail Informasi
-                                    </a>
-                                @else
-                                    <div class="alert alert-warning">
-                                        <i class="fas fa-exclamation-triangle me-2"></i>
-                                        Informasi bantuan sosial belum tersedia
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Layanan 3 -->
             <div class="accordion-item border-0 shadow-sm">
                 <h2 class="accordion-header" id="headingThree">

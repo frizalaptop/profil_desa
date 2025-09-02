@@ -95,25 +95,7 @@
             </div>
         </div>
     </div>
-    <!-- Card 2 -->
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm border-0">
-            <div class="card-body text-center p-4">
-                <i class="fas fa-hand-holding-heart feature-icon mb-3"></i>
-                <h5 class="card-title">Bantuan Sosial</h5>
-                <p class="card-text">Informasi program bantuan sosial dari pemerintah untuk warga.</p>
-                @if(Storage::disk('public')->exists('services/bansos.pdf'))
-                    <a href="{{ Storage::url('services/bansos.pdf') }}" target="_blank" class="btn btn-outline-success">
-                        <i class="fas fa-download me-1"></i> Download Info
-                    </a>
-                @else
-                    <button class="btn btn-outline-secondary" disabled>
-                        <i class="fas fa-file-excel me-1"></i> File Tidak Tersedia
-                    </button>
-                @endif
-            </div>
-        </div>
-    </div>
+    
     <!-- Card 3 -->
     <div class="col-md-4">
         <div class="card h-100 shadow-sm border-0">
