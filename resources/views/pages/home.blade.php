@@ -204,20 +204,68 @@
         </div>
       </div>
       <div class="col-lg-6">
+        <div class="container mt-4">
+          @if(session('success'))
+              <div class="alert alert-success alert-flash alert-dismissible fade show" role="alert">
+                  <i class="fas fa-check-circle me-2"></i>
+                  {{ session('success') }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+          @endif
+
+          @if(session('error'))
+              <div class="alert alert-danger alert-flash alert-dismissible fade show" role="alert">
+                  <i class="fas fa-exclamation-triangle me-2"></i>
+                  {{ session('error') }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+          @endif
+        </div>
         <form action="{{ route('complaint.store') }}" method="POST">
           @csrf
           <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Nama Anda" name="name">
+              <input type="text" 
+                    class="form-control @error('name') is-invalid @enderror" 
+                    placeholder="Nama Anda" 
+                    name="name" 
+                    value="{{ old('name') }}">
+              @error('name')
+                  <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
           </div>
+
           <div class="mb-3">
-            <input type="email" class="form-control" placeholder="Email" name="email">
+              <input
+                    class="form-control @error('email') is-invalid @enderror" 
+                    placeholder="Email" 
+                    name="email" 
+                    value="{{ old('email') }}">
+              @error('email')
+                  <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
           </div>
+
           <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Subjek" name="subject">
+              <input type="text" 
+                    class="form-control @error('subject') is-invalid @enderror" 
+                    placeholder="Subjek" 
+                    name="subject" 
+                    value="{{ old('subject') }}">
+              @error('subject')
+                  <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
           </div>
+
           <div class="mb-3">
-            <textarea class="form-control" rows="4" placeholder="Pesan" name="message"></textarea>
+              <textarea class="form-control @error('message') is-invalid @enderror" 
+                        rows="4" 
+                        placeholder="Pesan" 
+                        name="message">{{ old('message') }}</textarea>
+              @error('message')
+                  <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
           </div>
+
           <button type="submit" class="btn btn-success">Kirim Pesan</button>
         </form>
       </div>
