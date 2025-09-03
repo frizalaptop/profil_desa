@@ -37,6 +37,7 @@ Route::middleware(['auth', 'verified'])
         Route::resource('umkm', UmkmController::class)
             ->withoutMiddlewareFor(['index', 'show'], ['auth', 'verified']);
         Route::resource('activities', ActivityController::class)
+            ->except(['show'])
             ->withoutMiddlewareFor(['index', 'show'], ['auth', 'verified']);
     });
 
