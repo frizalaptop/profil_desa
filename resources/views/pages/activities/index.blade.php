@@ -31,17 +31,22 @@
                 @foreach($activities as $activity)
                     <div class="accordion-item border-0 shadow-sm mb-3">
                         <h2 class="accordion-header" id="heading{{ $activity->id }}">
-                            <button class="accordion-button {{ !$loop->first ? 'collapsed' : '' }} bg-light-green bg-opacity-10 text-success fw-bold" 
+                            <button class="accordion-button bg-light-green bg-opacity-10 text-success fw-bold" 
                                     type="button" 
                                     data-bs-toggle="collapse" 
                                     data-bs-target="#activity{{ $activity->id }}" 
                                     aria-expanded="{{ $loop->first ? 'true' : 'false' }}" 
                                     aria-controls="activity{{ $activity->id }}">
-                                <i class="fas fa-calendar-check me-3"></i> {{ $activity->title }}
+                                <i class="fas fa-calendar-check me-3"></i> 
+                                <span class="flex-grow-1">{{ $activity->title }}</span>
+                                <span class="badge bg-success bg-opacity-10 text-success ms-2">
+                                    <i class="fas fa-calendar-day me-1"></i> 
+                                    {{ \Carbon\Carbon::parse($activity->event_date)->translatedFormat('d F Y') }}
+                                </span>
                             </button>
                         </h2>
                         <div id="activity{{ $activity->id }}" 
-                             class="accordion-collapse collapse {{ $loop->first ? 'show' : '' }}" 
+                             class="accordion-collapse collapse " 
                              aria-labelledby="heading{{ $activity->id }}" 
                              data-bs-parent="#activitiesAccordion">
                             <div class="accordion-body">
@@ -62,9 +67,6 @@
                                             </span>
                                             <span class="badge bg-success bg-opacity-10 text-success">
                                                 <i class="fas fa-map-marker-alt me-1"></i> {{ $activity->location ?? 'Lokasi akan diumumkan' }}
-                                            </span>
-                                            <span class="badge bg-success bg-opacity-10 text-success">
-                                                <i class="fas fa-calendar-day me-1"></i> {{ \Carbon\Carbon::parse($activity->event_date)->translatedFormat('d F Y') }}
                                             </span>
                                         </div>
                                         <hr>

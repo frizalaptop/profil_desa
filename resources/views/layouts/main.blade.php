@@ -75,6 +75,7 @@
             <li class="nav-item"><a class="nav-link" href="/home">Profil</a></li>
             <li class="nav-item"><a class="nav-link" href="/umkm">UMKM</a></li>
             <li class="nav-item"><a class="nav-link" href="/service">Layanan</a></li>
+            <li class="nav-item"><a class="nav-link" href="/activities">Kegiatan</a></li>
             @auth
             <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
             @else

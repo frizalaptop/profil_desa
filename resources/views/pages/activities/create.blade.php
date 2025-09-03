@@ -14,7 +14,7 @@
                 <p class="lead">Catat agenda dan kegiatan penting desa</p>
             </div>
             <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
-                <a href="{{ route('activity.index') }}" class="btn btn-light">
+                <a href="{{ route('activities.index') }}" class="btn btn-light">
                     <i class="fas fa-arrow-left me-2"></i> Kembali
                 </a>
             </div>
@@ -29,7 +29,7 @@
             <div class="col-lg-8">
                 <div class="card shadow-sm border-0">
                     <div class="card-body p-4 p-md-5">
-                        <form action="{{ route('activity.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('activities.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="mb-4">
@@ -64,7 +64,10 @@
                                     <div class="col-md-6">
                                         <label for="location" class="form-label">Lokasi</label>
                                         <input type="text" class="form-control @error('location') is-invalid @enderror" 
-                                               id="location" name="location" value="{{ old('location') }}">
+                                               id="location" 
+                                               name="location" 
+                                               value="{{ old('location') }}"
+                                               placeholder="Contoh: Balai, Lapangan">
                                         @error('location')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

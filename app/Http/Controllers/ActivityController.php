@@ -14,7 +14,14 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = Activity::latest()->paginate(10);
+        $today = now()->toDateString();
+        $activities = Activity::orderByRaw("
+            CASE 
+                WHEN event_date >= ? THEN 0 
+                ELSE 1 
+            END, event_date ASC
+        ", [$today])
+        ->paginate(5);
         return view('pages.activities.index', compact('activities'));
     }
 
@@ -90,12 +97,15 @@ class ActivityController extends Controller
         ]);
 
         if ($request->hasFile('thumbnail')) {
+            if ($activity->thumbnail && Storage::disk('public')->exists($activity->thumbnail)) {
+                Storage::disk('public')->delete($activity->thumbnail);
+            }
             $validated['thumbnail'] = $request->file('thumbnail')->store('activities', 'public');
         }
 
         $activity->update($validated);
 
-        return redirect()->route('pages.activities.index')->with('success', 'Kegiatan berhasil diperbarui.');
+        return redirect()->route('activities.index')->with('success', 'Kegiatan berhasil diperbarui.');
     }
 
     /**
