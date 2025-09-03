@@ -71,10 +71,6 @@
                                         </div>
                                         <hr>
                                         <div class="d-flex justify-content-between">
-                                            <a href="{{ route('activities.show', $activity) }}" class="btn btn-outline-success">
-                                                <i class="fas fa-info-circle me-1"></i> Detail Kegiatan
-                                            </a>
-
                                             @auth
                                                 @if(auth()->user()->role === 'admin')
                                                     <div class="d-flex gap-2">

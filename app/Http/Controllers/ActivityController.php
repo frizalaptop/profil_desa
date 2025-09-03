@@ -62,14 +62,6 @@ class ActivityController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Activity $activity)
-    {
-        return view('pages.activities.show', compact('activity'));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Activity $activity)
