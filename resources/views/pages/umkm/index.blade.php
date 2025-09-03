@@ -33,6 +33,15 @@
           <h1 class="fw-bold mb-3 text-light">UMKM Desa Maju Makmur</h1>
           <p class="lead">Dukung produk lokal warga desa untuk kemandirian ekonomi</p>
         </div>
+        <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+            @auth
+                @if(auth()->user()->role === 'admin')
+                    <a href="/umkm/create" class="btn btn-light btn-lg">
+                        <i class="fas fa-plus-circle me-2"></i> Tambah UMKM
+                    </a>
+                @endif
+            @endauth
+        </div>
       </div>
     </div>
 </section>
@@ -59,13 +68,6 @@
 <!-- Daftar UMKM -->
 <section class="py-5">
     <div class="container">
-      @auth
-      <div class="row-lg-4 text-lg-end my-3">
-          <a href="/umkm/create" class="btn btn-success btn-lg">
-              <i class="fas fa-plus-circle me-2"></i> Tambah UMKM
-          </a>
-      </div>
-      @endauth
 
       <!-- Filter Kategori -->
       <form action="{{ route('umkm.index') }}" method="GET" class="filter-form">

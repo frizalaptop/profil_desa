@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
@@ -35,6 +36,8 @@ Route::middleware(['auth', 'verified'])
     ->group(function() {
         Route::resource('umkm', UmkmController::class)
             ->withoutMiddlewareFor(['index', 'show'], ['auth', 'verified']);
+        Route::resource('activities', ActivityController::class)
+            ->withoutMiddlewareFor(['index', 'show'], ['auth', 'verified']);
     });
 
 
@@ -47,8 +50,6 @@ Route::controller( UserController::class)->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    // Route::patch('/profile', [DashboardController::class, 'update'])->name('profile.update');
-    // Route::delete('/profile', [DashboardController::class, 'destroy'])->name('profile.destroy');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -61,6 +62,3 @@ Route::post('/complaint', [ComplaintController::class, 'store'])->name('complain
 
 
 require __DIR__.'/auth.php';
-
-
-// google-site-verification=UoCZtNOLdM3HgLN_-EUHe6bMpNfHoUQ9fbfZ2ewzfps
